@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>清除浮动</title>
+<style type="text/css">
+.news{
+	background-color: gray;
+	border: 1px solid red;
+
+}
+.news img{
+	float: left;
+}
+.news p{
+	float: right;
+}
+.clearfix:after{
+  content: "020"; 
+  display: block; 
+  height: 0; 
+  clear: both; 
+  visibility: hidden;  
+  }
+
+.clearfix {
+  /* 触发 hasLayout */ 
+  zoom: 1; 
+  }
+</style>
+</head>
+<body>
+	<div class="news clearfix">
+		<img src="./1.jpg" />
+		<p>dfdfdfasdfasdfasdfasdfjskajldfasldkfjasldkfjaslkdjfaslkdjfaj</p>
+	</div>
+</body>
+<!--清除浮动的方法
+1、通过增加多余的无语义的标签
+.clearfix{
+	clear: both;
+}
+<div class="clearfix"></div>
+优点：简洁，代码少，兼容性还不错
+缺点：需要增加很多没有语义的标签，感觉代码不够优雅，后期维护困难
+2、使用CSS的overflow属性
+给浮动元素的容器添加overflow:hidden;或overflow:auto;可以清除浮动，另外在 IE6 中还需要触发 hasLayout ，例如为父元素设置容器宽高或设置 zoom:1。
+在添加overflow属性后，浮动元素又回到了容器层，把容器高度撑起，达到了清理浮动的效果。
+overflow: hidden;
+*zoom:1;
+3、比较low的一种方式，就是给浮动元素的容器加上浮动
+给浮动元素的容器也添加上浮动属性即可清除内部浮动，但是这样会使其整体浮动，影响布局，不推荐使用。
+4、使用邻接元素处理
+什么都不做，给浮动元素后面的元素添加clear属性。优点类似clearfix第一种
+.content{
+  clear:both;
+ }
+ 5、使用CSS的:after伪元素
+ .clearfix:after{
+  content: "020"; 
+  display: block; 
+  height: 0; 
+  clear: both; 
+  visibility: hidden;  
+  }
+
+.clearfix {
+  /* 触发 hasLayout */ 
+  zoom: 1; 
+  }
+  通过CSS伪元素在容器的内部元素最后添加了一个看不见的空格"020"或点"."，并且赋予clear属性来清除浮动。需要注意的是为了IE6和IE7浏览器，要给clearfix这个class添加一条zoom:1;触发haslayout。
+
+总结：
+通过上面的例子，不难发现清除浮动的方法可以分成两类：
+一是利用 clear 属性，包括在浮动元素末尾添加一个带有 clear: both 属性的空 div 来闭合元素，其实利用 :after 伪元素的方法也是在元素末尾添加一个内容为一个点并带有 clear: both 属性的元素实现的。
+二是触发浮动元素父元素的 BFC (Block Formatting Contexts, 块级格式化上下文)，使到该父元素可以包含浮动元素，关于这一点。
+推荐：
+在网页主要布局时使用:after伪元素方法并作为主要清理浮动方式；在小模块如ul里使用overflow:hidden;（留意可能产生的隐藏溢出元素问题）；如果本身就是浮动元素则可自动清除内部浮动，无需格外处理；正文中使用邻接元素清理之前的浮动。
+最后可以使用相对完美的:after伪元素方法清理浮动，文档结构更加清晰。
+-->
+</html>
