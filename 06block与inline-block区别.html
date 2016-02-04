@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>display:inline、block、inline-block的区别</title>
+</head>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+	color: black;
+}
+div,span{background-color:green;margin:5px;border:1px solid #333;padding:5px;height:52px;color:#fff;}
+.block{display:block;}
+.inline{display:inline; width: 100px;height: 100px;margin-top: 100px; margin-bottom: 100px; }
+div.inline-block{display:inline-block; width: 100px;height: 100px;margin-top: 100px; margin-bottom: 100px; }
+a.inline-block{display:inline-block; width: 200px; height: 100px;}
+a.block{display:block; width: 100px;height: 180px;}
+span.v{padding:0;margin:0;border:0;vertical-align:middle;height:100%}
+</style>
+<body>
+<div>div</div>
+
+<div class="block">div display:block</div>
+
+<div class="inline">div display:inline无法设置宽高宽度又内容决定</div>
+
+<div class="inline-block">div display:inline-block 可设宽高边距</div>
+
+<span>span行内元素无法设置宽高宽度又内容决定</span>
+
+<span class="block">span display:block</span>
+
+<span><a class="inline-block">a display:inline-block 可设宽高边距 但最外面被行内元素包围所以可视区域为外面父元素的可视区域，但是会被内容撑开，并且内容只在可视区域内可见</a></span>
+
+<span><a class="block">a display:block a display:block   被父元素包围，但是内部却要前后换行所以会出现前后断层的效果</a></span>
+
+<div><span class="v"></span>vertical-align:middle</div>
+<!--
+对display的三种常用（block,inline,inline-block）的属性的思考
+1、display:block
+将元素变为块级元素可以设置宽高，以及margin-top,margin-bottom,padding-top,padding-bottom,感觉一切都是可控的。
+会单独成行。会前后换行
+2、display:inline
+将元素转化成行内元素，都会和其他行内元素成行
+高，行高及顶和底外边距不可改变；
+宽度就是它的文字或图片的宽度，不可改变。
+3、display:inline-block
+将元素转化成行内块级元素，能够设置宽高和边距
+-->
+</body>
+</html>
