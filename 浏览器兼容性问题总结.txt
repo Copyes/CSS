@@ -1,0 +1,19 @@
+浏览器兼容性问题一
+不同浏览器的标签的默认的外边距和内填充不一样
+解决方案：*{margin:0;padding:0}
+浏览器兼容性问题二
+块级元素float过后，如果又有横行的margin ，在ie6下面会呈现比原来大的边距。产生双边距问题。
+.box{float:left;width:100px;height:100px;margin-left:10px;}
+解决方法：使float的元素的display：inline，将其转化为行级元素
+浏览器兼容性问题三
+设置较小高度的标签（一般情况下小于10px），在ie6,7下高度往往会比自己设置的高
+解决方案：给超出高度的元素设置overflow：hidden；或者设置行高小于自己设置的高度
+浏览器兼容性问题四
+行内属性标签，设置display：block后使用float属性，如果同时还有margin的情况的话，拿么ie6会有间距bug
+解决方案：在display：block后面加上display：inline;display:table;
+浏览器兼容性问题五
+几个img标签放在一起的时候，有些浏览器会有默认的间距，加了问题一中提到的通配符也不起作用。
+解决方案：使用float属性使img标签浮动
+浏览器兼容性问题六
+标签最低高度设置min-height不兼容，因为min-height本身就是一个不兼容的CSS属性，所以设置min-height时不能很好的被各个浏览器兼容
+解决方案：如果我们要设置一个标签的最小高度200px，需要进行的设置为：{min-height:200px; height:auto !important; height:200px; overflow:visible;}
