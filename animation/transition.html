@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            background-color: red;
+            width:100px;
+            height:100px;
+        }
+        @keyframes changeColor {
+            0%{
+                background-color: aquamarine;
+                width: 130px;
+                height:130px;
+            }
+            50%{
+                background-color: aqua;
+                width:160px;
+                height:160px;
+
+            }
+            100%{
+                background-color: red;
+                width: 100px;
+                height:100px;
+            }
+        }
+        div:hover{
+            -webkit-animation:changeColor 1s linear;
+            -o-animation:changeColor 1s linear;
+            animation:changeColor 1s linear;
+        }
+    </style>
+</head>
+<body>
+<div>aaaa</div>
+</body>
+</html>
